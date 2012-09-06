@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <grants />
+    <permissions />
+    <actions>
+		<action name="dispApicenterAdminList" type="view" admin_index="true" />
+		<action name="dispApicenterAdminView" type="view"  standalone="true" />
+		<action name="dispApicenterAdminKeyList" type="view"  standalone="true" />
+		<action name="dispApicenterAdminGrantInfo" type="view"  standalone="true" />
+
+		<action name="procApicenterAdminInsertApiItem" type="controller" />
+		<action name="procApicenterAdminInsertApiKey" type="controller" />
+		<action name="proApicenterAdminDeleteApiItem" type="controller" />
+		<action name="proApicenterAdminDeleteApiKey" type="controller" />
+		<action name="proApicenterAdminUpdateApiGrants" type="controller" />
+		<action name="procApicenterAdminGetTextyleList" type="controller" />
+		<action name="procApicenterAdminGetCategoryConfig" type="controller" />
+		<action name="procApicenterAdminDeleteSelectedApiItems" type="controller" />
+		<action name="procApicenterAdminDeleteSelectedKeys" type="controller" />
+		<action name="dispApicenterErrorMsg" type="view"  standalone="true" />
+		<action name="dispApicenterViewInstruction" type="view"  standalone="true" />
+
+
+		<action name="getApicenterAdminItemInfo" type="model" standalone="true" />
+		<action name="getApicenterAdminKeyValidate" type="model" standalone="true" />
+		<action name="getApicenterAdminKeyInfo" type="model" standalone="true" />
+
+
+		 <!-- Module API Methods-->
+		 <action name="dispApicenterData" type="view" standalone="true" index="true" />
+    </actions>
+</module>

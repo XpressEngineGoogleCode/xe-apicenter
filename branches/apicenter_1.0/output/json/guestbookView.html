@@ -1,0 +1,25 @@
+{
+	"status_code":"200",
+	"status_message":"Load guestbook document information successful.",
+	"document":{
+		"id":"{$document_info->guestbook_item_srl}",
+		"content":"{str_replace(array("\r\n","\n","\t","\\"),"",htmlspecialchars($document_info->content))}",
+		"create_date":"{$document_info->regdate}",
+		"author":"{$document_info->nick_name}",
+		<!--@if($document_info->author_profile_image)-->
+			"profile_image":"{$document_info->author_profile_image}",
+		<!--@end-->
+		"comment_count":"{$document_info->comment_count}"<!--@if($comment_list)-->,<!--@end-->
+		<!--@if($comment_list)-->
+			"comments":{
+				"comment":[<!--@foreach($comment_list as $key => $oComment)-->{
+					"comment_id":"{$oComment->comment_srl}",
+					"comment_content":"{str_replace(array("\r\n","\n","\t","\\"), "",htmlspecialchars($oComment->content))}",
+					"comment_date":"{$oComment->regdate}",
+					"comment_author":"{$oComment->nick_name}"<!--@if($oMemberModel->getProfileImage($oComment->member_srl)->src)-->,
+					"comment_profile_image":"{$oMemberModel->getProfileImage($oComment->member_srl)->src}"<!--@end-->
+				}<!--@if($key != count($comment_list)-1)-->,<!--@end--><!--@end-->]
+			}
+		<!--@end-->
+	}
+}

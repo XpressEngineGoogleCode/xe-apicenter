@@ -1,0 +1,20 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_list)-->Load guestbook document list successful.<!--@else-->There isn't a guestbook document list.<!--@end--></status_message>
+	<documents doc_count="{count($document_list)}">
+	<!--@foreach($document_list as $oDocument)-->
+	<document>
+	    <id>{$oDocument->guestbook_item_srl}</id>
+	    <content>{str_replace('\'', '&apos;',htmlspecialchars($oDocument->content))}</content>
+	    <create_date>{$oDocument->regdate}</create_date>
+	    <author>{$oDocument->nick_name}</author>
+		<comment_count>{$oDocument->comment_count}</comment_count>
+		<!--@if($oDocument->author_profile_image)-->
+		<profile_image>{$oDocument->author_profile_image}</profile_image>
+		<!--@end-->
+	</document>
+	<!--@end-->
+	</documents>
+</response>

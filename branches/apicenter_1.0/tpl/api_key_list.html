@@ -1,0 +1,80 @@
+<include target="header.html" />
+<script type="text/javascript">
+	xe.lang.confirm_delete = "Do you want to delete this API Key?";
+</script>
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<div class="table even">
+	<table width="100%" cellspacing="0" border="1" id="apiKeyList">
+		<caption>
+			Total API Keys: {number_format($total_count)}, Page: {number_format($page)}/{number_format($total_page)}
+			<div class="side">
+				<span class="btn"><a class="modalAnchor _addkey" href="#editAPIKey" >Apply a New API Key</a></span>
+				<span class="btn"><a href="#manageSelectedKey" class="modalAnchor">Manage Selected API Key...</a></span>
+			</div>
+		</caption>
+		<thead>
+			<tr>
+				<th scope="col" width="25%">API Key</th>
+				<th scope="col" width="30%">Purpose</th>
+				<th scope="col" width="10%">Author</th>
+				<th scope="col" width="15%">Created Date</th>
+				<th scope="col" width="10%">Configure</th>
+				<th scope="col" width="10%">Delete</th>
+				<th scope="col"><input type="checkbox" title="Check All" data-name="cart" class="all_check"></th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th scope="col">API Key</th>
+				<th scope="col">Purpose</th>
+				<th scope="col">Author</th>
+				<th scope="col">Created Date</th>
+				<th scope="col">Configure</th>
+				<th scope="col">Delete</th>
+				<th scope="col"><input type="checkbox" title="Check All" data-name="cart" class="all_check"></th>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr loop="$apiKeyList => $key, $apiKey">
+				<td>
+						<pre><span class="apikey_span">{$apiKey->api_key}</span><button id="modify_p_3" class="btn copytoclip" onClick="doCopyToClipboard('{$apiKey->api_key}');">Copy to Clipboard</button></pre>
+				</td>
+				<td>{$apiKey->purpose}</td>
+				<td><a href="#popup_menu_area" class="member_4">{$apiKey->nick_name}</a></td>
+				<td>{zdate($apiKey->regdate,'Y M d, h:i')}</td>
+				<td><a data="{$apiKey->api_key_srl}" class="modalAnchor _editkey" href="#editAPIKey">Configure</a></td>
+				<td><a href="{getUrl('act','proApicenterAdminDeleteApiKey','api_key_srl',$apiKey->api_key_srl)}" onclick="return confirmDelete();" href="#" class="_deletekey">Delete</a></td>
+				<td><input type="checkbox" value="{$apiKey->api_key_srl}" name="checkbox_name[{$apiKey->api_key_srl}]"  data-key="{$apiKey->api_key}" data-purpose="{cut_str($apiKey->purpose,90)}"   data-author="{$apiKey->nick_name}" data-date="{zdate($apiKey->regdate, 'M d, Y h:i')}" class="selectedApiKey"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="search pagination">
+	<a href="{getUrl('page', '')}" class="direction">&laquo; FIRST</a>
+	<block cond="$page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page && $page_navigation->page_count != $page_navigation->total_page">
+		{@$isGoTo = true}
+		<a href="{getUrl('page', '')}">1</a>
+		<a href="#goTo" class="tgAnchor" title="{$lang->cmd_go_to_page}">...</a>
+	</block>
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+		{@$last_page = $page_no}
+		<strong cond="$page_no == $page">{$page_no}</strong>
+		<a cond="$page_no != $page" href="{getUrl('page', $page_no)}">{$page_no}</a>
+	<!--@end-->
+	<block cond="$last_page != $page_navigation->last_page">
+		{@$isGoTo = true}
+		<a href="#goTo" class="tgAnchor" title="{$lang->cmd_go_to_page}">...</a>
+		<a href="{getUrl('page', $page_navigation->last_page)}">{$page_navigation->last_page}</a>
+	</block>
+	<a href="{getUrl('page', $page_navigation->last_page)}" class="direction">LAST &raquo;</a>
+</div>
+
+<include target="api_key_insert.html" />
+
+<include target="include.manage_selected_key.html" />
+

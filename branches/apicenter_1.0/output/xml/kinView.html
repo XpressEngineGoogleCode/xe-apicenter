@@ -1,0 +1,64 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_info)-->Load kin document information successful.<!--@else-->There isn't a kin document.<!--@end--></status_message>
+	<document>
+		<id>{$document_info->document_srl}</id>
+		<title>{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('title')))}</title>
+		<!--@if($document_info->get('category_srl'))-->
+	    <category>
+			<category_id>{$document_info->get('category_srl')}</category_id>
+			<category_title>{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('category_title')))}</category_title>
+		</category>
+		<!--@end-->
+	    <content>{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('content')))}</content>
+	    <create_date>{$document_info->get('regdate')}</create_date>
+	    <author>{$document_info->get('nick_name')}</author>
+		<point>{intval($document_info->get('point'))}</point>
+		<!--@if($document_info->getThumbnail())-->
+			<thumbnail>{$document_info->getThumbnail(100)}</thumbnail>
+		<!--@end-->
+		<!--@if($document_info->hasUploadedFiles())-->
+			<attachments  attach_count="{$document_info->get('uploaded_count')}">
+				<!--@foreach($document_info->getUploadedFiles() as $attachment)-->
+					<attachment>
+						<filename>{$attachment->source_filename}</filename>
+						<filesize>{$attachment->file_size}</filesize>
+						<download>{getFullUrl('')}{$attachment->download_url}</download>
+					</attachment>
+				<!--@end-->
+			</attachments>
+		<!--@end-->
+		<answer_count>{$document_info->get('comment_count')}</answer_count>
+		<accepted_answer>{$document_info->get('accepted_answer')}</accepted_answer>
+		<!--@if($answer_list)-->
+			<answers>
+				<!--@foreach($answer_list as $oAnswer)-->
+					<answer>
+						<answer_id>{$oAnswer->comment_srl}</answer_id>
+						<answer_content>{str_replace('\'', '&apos;',htmlspecialchars($oAnswer->content))}</answer_content>
+						<answer_date>{$oAnswer->regdate}</answer_date>
+						<answer_author>{$oAnswer->nick_name}</answer_author>
+						<!--@if($oAnswer->comment_srl == $document_info->get('accepted_answer'))-->
+						<answer_accepted>Yes</answer_accepted>
+						<!--@end-->
+					</answer>
+				<!--@end-->
+			</answers>
+		<!--@end-->
+		<replies_count>{$document_info->get('repliesCount')}</replies_count>
+		<!--@if($replies)-->
+			<replies>
+				<!--@foreach($replies as $reply)-->
+					<reply>
+						<reply_id>{$reply->reply_srl}</reply_id>
+						<reply_content>{str_replace('\'', '&apos;',htmlspecialchars($reply->content))}</reply_content>
+						<reply_date>{$reply->regdate}</reply_date>
+						<reply_author>{$reply->nick_name}</reply_author>
+					</reply>
+				<!--@end-->
+			</replies>
+		<!--@end-->
+	</document>
+</response>

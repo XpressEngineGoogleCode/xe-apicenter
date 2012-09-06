@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <title xml:lang="ko">API Center</title>
+    <title xml:lang="zh-CN">API 中心</title>
+    <title xml:lang="en">API Center</title>
+    <description xml:lang="ko">
+        The API Center module allows XE admin user to add, modify and delete API Items based on extension XE modules. 
+    </description>
+    <description xml:lang="zh-CN">
+       The API Center module allows XE admin user to add, modify and delete API URLs based on extension XE modules. 
+    </description>
+    <description xml:lang="en">
+       The API Center module allows XE admin user to add, modify and delete API URLs based on extension XE modules. 
+    </description>
+    <version>1.0</version>
+    <date>2012-07-10</date>
+    <category>utility</category>
+
+    <author email_address="developers@xpressengine.com" link="http://xpressengine.com/">
+        <name xml:lang="ko">NHN</name>
+        <name xml:lang="vi">NHN</name>
+        <name xml:lang="zh-CN">NHN</name>
+        <name xml:lang="jp">NHN</name>
+        <name xml:lang="en">NHN</name>
+        <name xml:lang="es">NHN</name>
+        <name xml:lang="ru">NHN</name>
+        <name xml:lang="zh-TW">NHN</name>
+        <name xml:lang="tr">NHN</name>
+    </author>
+</module>

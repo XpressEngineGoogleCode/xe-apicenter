@@ -1,0 +1,8 @@
+<query id="deleteApiUrlsByApiItem" action="delete">
+    <tables>
+        <table name="api_urls" />
+    </tables>
+	<conditions>
+			<condition operation="in" column="api_item_srl" var="api_item_srl" filter="number" notnull="notnull" />
+	</conditions>
+</query>

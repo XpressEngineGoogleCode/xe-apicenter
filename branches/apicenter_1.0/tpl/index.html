@@ -1,0 +1,114 @@
+<include target="header.html" />
+<script type="text/javascript">
+	xe.lang.confirm_delete = "Are you sure to delete this API?";
+</script>
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form action="./" method="get" class="adminSearch form">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="act" value="dispApicenterAdminList" />
+        <fieldset class="api_fieldset">
+			<label for="s_module">Module </label>						
+			<select id="sModule" name="s_module">
+				<option value="all" <!--@if($s_module=='all')-->selected<!--@end-->>All Modules</option>
+				<block loop="$module_list=>$key,$value">
+					<option value="{$key}"  <!--@if($s_module==$key)-->selected<!--@end-->>{$value->title}</option>
+				</block>
+			</select>
+			<label for="s_output_format">Format </label>
+			<select style="width:100px" id="sModule_id" name="s_output_format">
+				<option value="all" <!--@if($s_output_format=='all')-->selected<!--@end-->>All Formats</option>
+				<option value="xml" <!--@if($s_output_format=='xml')-->selected<!--@end-->>XML</option>
+				<option value="json" <!--@if($s_output_format=='json')-->selected<!--@end-->>JSON</option>
+			</select>
+			<input type="text" id="s_contents" name="s_contents" value="{$s_contents}" class="s_contents" />
+            <span class="button blue"><input type="submit" value="{$lang->cmd_search}" class="s_api_search"/></span>
+            <a href="{getUrl('s_module','','s_output_format','','s_contents','')}" class="btn s_api_cancel"><span>{$lang->cmd_cancel}</span></a>
+        </fieldset>
+</form>
+
+<div class="table even">
+	<table width="100%" cellspacing="0" border="1" id="documentListTable">
+		<caption>
+			Total APIs: {number_format($total_count)}, Page: {number_format($page)}/{number_format($total_page)}
+			<div class="side">
+				<span class="btn"><a class="modalAnchor _add"  href="#editAPI">Create a new API</a></span>
+				<span class="btn"><a href="#manageSelectedAPI" class="modalAnchor">Manage Selected API...</a></span>
+			</div>
+		</caption>
+		<thead>
+			<tr>
+				<th scope="col"  width="3%">{$lang->no}</th>
+				<th scope="col" width="35%">API Subject</th>
+				<th scope="col" width="8%">Module</th>
+				<th scope="col" width="8%">Format</th>
+				<th scope="col" width="8%">Author</th>
+				<th scope="col" width="12%">Date</th>
+				<th scope="col" width="10%">Document</th>
+				<th scope="col">Configure</th>
+				<th scope="col">Delete</th>
+				<th scope="col"><input type="checkbox" title="Check All" data-name="cart" class="all_check"></th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th scope="col">{$lang->no}</th>
+				<th scope="col">API Subject</th>
+				<th scope="col">Module</th>
+				<th scope="col">Format</th>
+				<th scope="col">Author</th>
+				<th scope="col">Date</th>
+				<th scope="col">Document</th>
+				<th scope="col">Configure</th>
+				<th scope="col">Delete</th>
+				<th scope="col"><input type="checkbox" title="Check All" data-name="cart" class="all_check"></th>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr loop="$apiItemList =>$key, $apiItem">
+				<td>{$key}</td>
+				<td>
+						<a href="{getUrl('act','dispApicenterAdminView','api_item_srl',$apiItem->api_item_srl)}" style="color:black">{$apiItem->api_title}</a><br style="margin-bottom:18px"/>
+						Source URL: <a href="{getFullUrl('','mid',$apiItem->mid)}" target="blank">{getFullUrl('','mid',$apiItem->mid)}</a><br style="margin-bottom:18px"/>
+						API Key:  <span style="color:red">{$apiItem->api_key}</span>
+
+				</td>
+				<td>{ucfirst($apiItem->module)}</td>
+				<td>{strtoupper($apiItem->output_format)}</td>
+				<td><a class="member_4" href="#popup_menu_area">{$apiItem->nick_name}</a></td>
+				<td>{zdate($apiItem->regdate, 'M d, Y h:i')}</td>
+				<td><a href="" onclick="window.open('{getUrl('module','apicenter','act','dispApicenterViewInstruction','api_module',$apiItem->module,'api_output',$apiItem->output_format)}','newwindow','height=600,width=900,top=50,left=200,toolbar=no,menubar=no,scrollbars=yes, location=no, status=no'); return false;" >View Reference</a></td>
+				<td><a href="#editAPI" class="modalAnchor _edit" data="{$apiItem->api_item_srl}">Configure</a></td>
+				<td><a href="{getUrl('act','proApicenterAdminDeleteApiItem','api_item_srl',$apiItem->api_item_srl)}" onclick="return confirmDelete();" class="_delete">Delete</a></td>
+				<td><input type="checkbox" value="{$apiItem->api_item_srl}" name="checkbox_name[{$apiItem->api_item_srl}]"  data-title="{$apiItem->api_title}" data-module="{$apiItem->module}"  data-output="{strtoupper($apiItem->output_format)}" data-author="{$apiItem->nick_name}" data-date="{zdate($apiItem->regdate, 'M d, Y h:i')}" class="selectedApiItem"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="search pagination">
+	<a href="{getUrl('page', '')}" class="direction">&laquo; FIRST</a>
+	<block cond="$page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page && $page_navigation->page_count != $page_navigation->total_page">
+		{@$isGoTo = true}
+		<a href="{getUrl('page', '')}">1</a>
+		<a href="#goTo" class="tgAnchor" title="{$lang->cmd_go_to_page}">...</a>
+	</block>
+	<!--@while($page_no = $page_navigation->getNextPage())-->
+		{@$last_page = $page_no}
+		<strong cond="$page_no == $page">{$page_no}</strong>
+		<a cond="$page_no != $page" href="{getUrl('page', $page_no)}">{$page_no}</a>
+	<!--@end-->
+	<block cond="$last_page != $page_navigation->last_page">
+		{@$isGoTo = true}
+		<a href="#goTo" class="tgAnchor" title="{$lang->cmd_go_to_page}">...</a>
+		<a href="{getUrl('page', $page_navigation->last_page)}">{$page_navigation->last_page}</a>
+	</block>
+	<a href="{getUrl('page', $page_navigation->last_page)}" class="direction">LAST &raquo;</a>
+</div>
+
+<include target="api_insert.html" />
+
+<include target="include.manage_selected.html" />

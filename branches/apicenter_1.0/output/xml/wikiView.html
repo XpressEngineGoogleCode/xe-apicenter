@@ -1,0 +1,38 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_info)-->Load wiki document information successful.<!--@else-->There isn't a wiki document.<!--@end--></status_message>
+	<document>
+		<id>{$oDocument->get('document_srl')}</id>
+		<title>{str_replace('\'', '&apos;',htmlspecialchars($oDocument->get('title')))}</title>
+	    <content>{str_replace('\'', '&apos;',htmlspecialchars($document_info->content))}</content>
+	    <create_date>{$oDocument->get('regdate')}</create_date>
+	    <author>{$oDocument->get('nick_name')}</author>
+		<contributors>{$document_info->contributors}</contributors>
+		<!--@if($oDocument->hasUploadedFiles())-->
+			<attachments  attach_count="{$oDocument->get('uploaded_count')}">
+				<!--@foreach($oDocument->getUploadedFiles() as $attachment)-->
+					<attachment>
+						<filename>{$attachment->source_filename}</filename>
+						<filesize>{$attachment->file_size}</filesize>
+						<download>{getFullUrl('')}{$attachment->download_url}</download>
+					</attachment>
+				<!--@end-->
+			</attachments>
+		<!--@end-->
+		<comment_count>{$oDocument->get('comment_count')}</comment_count>
+		<!--@if($comment_list)-->
+			<comments>
+				<!--@foreach($comment_list as $oComment)-->
+					<comment>
+						<comment_id>{$oComment->comment_srl}</comment_id>
+						<comment_content>{str_replace('\'', '&apos;',htmlspecialchars($oComment->content))}</comment_content>
+						<comment_date>{$oComment->regdate}</comment_date>
+						<comment_author>{$oComment->nick_name}</comment_author>
+					</comment>
+				<!--@end-->
+			</comments>
+		<!--@end-->
+	</document>
+</response>

@@ -1,0 +1,25 @@
+<div class="modal" id="editAPIKey">
+	<div class="fg">
+		<form ruleset="insertApiKey" id="editKeyForm" action="./" method="post" enctype="multipart/form-data" class="form">
+		<input type="hidden" name="module" value="apicenter" />
+		<input type="hidden" name="act" value="procApicenterAdminInsertApiKey" />
+		<input type="hidden" name="api_key_srl" value="" />
+		<h2 class="h2"><span>{$lang->add_api_key}</span><span cond="$api_key_srl">{$lang->edit_api_key}</span></h2>
+			<ul>
+				<li>
+					<p class="q"><label for="name">{$lang->user_name} :</label><span class="user_name">{$logged_info->nick_name}</span></p>
+				</li>
+				<li class="api_key_label">
+					<p class="q"><label for="key">{$lang->api_keys} :</label><span class="api_key_value"></span></p>
+				</li>
+				<li id="api_key_purpose">
+					<p class="q">{$lang->purpose} :</p>
+					<textarea rows="15" name="api_purpose"></textarea>
+				</li>
+			</ul>
+			<div class="btnArea">
+				<span class="btn"><input type="submit" value="{$lang->generate_api_key}" id="generateKey"/></span>
+			</div>
+		</form>
+	</div>
+</div>

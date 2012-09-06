@@ -1,0 +1,23 @@
+{
+	"status_code":"200",
+	"status_message":"Load faq document list successful.",
+	"documents":{
+		"attributes":{
+			"doc_count":"{count($document_list)}"
+		},
+		"document":[<!--@foreach($document_list as $key => $oDocument)-->{
+			"id":"{$oDocument->question_srl}",
+			"question": "{str_replace('\'', '&apos;',htmlspecialchars($oDocument->get('question')))}",
+			<!--@if($oDocument->get('category_srl'))-->
+				"category":{
+					"category_id":"{$oDocument->get('category_srl')}",
+					"category_title":"{str_replace('\'', '&apos;', $oFaqModel->getCategory($oDocument->get('category_srl'))->title)}"
+					},
+			<!--@end-->
+			"answer": "{str_replace(array("\r\n","\n","\t"),"",htmlspecialchars($oDocument->get('answer')))}",
+			"create_date":"{strtotime($oDocument->get('regdate'))}",
+			"author":"{$oMemberModel->getMemberInfoByMemberSrl($oDocument->get('member_srl'))->nick_name}",
+			"positive_vote":"{$oDocument->get('positive')}",
+			"negative_vote":"{$oDocument->get('negative')}"
+	}<!--@if($key != 1)-->,<!--@end--><!--@end-->]
+}}
