@@ -1,0 +1,20 @@
+<query id="insertApiUrl" action="insert">
+    <tables>
+        <table name="api_urls" />
+    </tables>
+    <columns>
+        <column name="api_url_srl" var="api_url_srl" filter="number" notnull="notnull" />
+		<column name="api_item_srl" var="api_item_srl" notnull="notnull" />
+		<column name="api_type" var="api_type" notnull="notnull" />
+		<column name="module" var="module" notnull="notnull" />
+		<column name="module_srl" var="module_srl" filter="number" default="0" />
+		<column name="api_key_srl" var="api_key_srl" filter="number" default="0" />
+		<column name="api_key" var="api_key" notnull="notnull" />
+		<column name="url" var="url" />
+		<column name="login_api" var="login_api" />
+		<column name="oauth" var="oauth" />
+		<column name="member_srl" var="member_srl" notnull="notnull"/>
+		<column name="regdate" var="regdate" default="curdate()" />
+		<column name="extra_vars" var="extra_vars" default=""/>
+    </columns>
+</query>

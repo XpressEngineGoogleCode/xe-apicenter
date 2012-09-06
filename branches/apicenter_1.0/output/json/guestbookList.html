@@ -1,0 +1,18 @@
+{
+	"status_code":"200",
+	"status_message":"Load guestbook document list successful.",
+	"documents":{
+		"attributes":{
+			"doc_count":"{count($document_list)}"
+		},
+		"document":[<!--@foreach($document_list as $key => $oDocument)-->{
+			"id":"{$oDocument->guestbook_item_srl}",
+			"content": "{str_replace(array("\r\n","\n","\t","\\"),"",htmlspecialchars($oDocument->content))}",
+			"create_date":"{$oDocument->regdate}",
+			"author":"{$oDocument->nick_name}",
+			<!--@if($oDocument->author_profile_image)-->
+				"profile_image":"{$oDocument->author_profile_image}",
+			<!--@end-->
+			"comment_count":"{$oDocument->comment_count}"
+	}<!--@if($key != 1)-->,<!--@end--><!--@end-->]
+}}

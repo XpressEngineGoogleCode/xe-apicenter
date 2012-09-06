@@ -1,0 +1,20 @@
+{
+	"status_code":"200",
+	"status_message":"Load wiki document list successful.",
+	"documents":{
+		"attributes":{
+			"doc_count":"{$count}"
+		},
+		"document":[<!--@foreach($document_list as $key => $oDocument)-->{
+			"id":"{$oDocument->document_srl}",
+			"parent_id":"{$oDocument->parent_srl}",
+			"children":"{$oDocument->child}",
+			"depth":"{$oDocument->depth}",
+			"language":"{$oDocument->language}",
+			"title": "{htmlspecialchars($oDocument->title)}",
+			"content": "{str_replace(array("\r\n","\n","\t"),"",htmlspecialchars($oDocument->content))}",
+			"create_date":"{strtotime($oDocument->created_date)}",
+			"author":"{$oDocument->author}",
+			"comment_count":"{$oDocument->comment_count}"
+	}<!--@if($index != count($document_list)-1)-->,{@$index++;}<!--@end--><!--@end-->]
+}}

@@ -1,0 +1,95 @@
+<include target="header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form class="form" id="fo_obj" onsubmit="return procFilter(this, insert_grant)" method="post" action="./">
+	<input type="hidden" value="{$api_item_srl}" name="api_item_srl">
+	<input type="hidden" value="proApicenterAdminUpdateApiGrants" name="act">
+	<input type="hidden" value="{$api_item->module}" name="target_module">
+	
+	<h2 class="h2">Permission Setting</h2>
+	<p>You can change the permission of target user to use each API URL, 1. All users (i.e. all visitors)  2. Registered users  3. Admininstrator  4. Document owner (for modify and delete API)    .</p>
+	<div class="table" id="api_grants">
+		<table width="100%" cellspacing="0" border="1">
+			<thead>
+				<tr>
+					<th scope="col" width="20%">Permission</th>
+					<th colspan="3" scope="col">Target User</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr cond="$api_grants['list']">
+					<input type="hidden" value="{$api_grants['list']->api_url_srl}" name="api_list_url">
+					<th scope="row">List</th>
+					<td>
+						<select class="grant_default" name="api_list_grants">
+							<option selected="selected"|cond="$api_grants['list']->group_srl == '0'" value="0" >All users</option>							
+							<option selected="selected"|cond="$api_grants['list']->group_srl == '-1'" value="-1">Registered users</option>	
+							<option selected="selected"|cond="$api_grants['list']->group_srl == '-2'" value="-2">Admin users</option>
+						</select>
+				</tr>
+				<tr cond="$api_grants['view']">
+					<input type="hidden" value="{$api_grants['view']->api_url_srl}" name="api_view_url">
+					<th scope="row">View</th>
+					<td>
+						<select class="grant_default" name="api_view_grants">
+							<option  selected="selected"|cond="$api_grants['view']->group_srl == '0'" value="0">All users</option>							
+							<option  selected="selected"|cond="$api_grants['view']->group_srl == '-1'" value="-1">Registered users</option>
+							<option  selected="selected"|cond="$api_grants['view']->group_srl == '-2'" value="-2">Admin users</option>
+						</select>
+						</td>
+				</tr>
+				<tr cond="$api_grants['write']">
+					<input type="hidden" value="{$api_grants['write']->api_url_srl}" name="api_write_url">
+					<th scope="row">Write Document</th>
+					<td>
+						<select class="grant_default" name="api_write_grants">
+							<option selected="selected"|cond="$api_grants['write']->group_srl == '0'" value="0">All users</option>												
+							<option selected="selected"|cond="$api_grants['write']->group_srl == '-1'" value="-1">Registered users</option>	
+							<option selected="selected"|cond="$api_grants['write']->group_srl == '-2'" value="-2">Admin users</option>
+						</select>
+					</td>
+				</tr>
+				<tr cond="$api_grants['modify']">
+					<input type="hidden" value="{$api_grants['modify']->api_url_srl}" name="api_modify_url">
+					<th scope="row">Modify Document</th>
+					<td>
+						<select class="grant_default" name="api_modify_grants">
+							<option selected="selected"|cond="$api_grants['modify']->group_srl == '0'"  value="0">All users</option>												
+							<option selected="selected"|cond="$api_grants['modify']->group_srl == '-1'"  value="-1">Registered users</option>	
+							<option selected="selected"|cond="$api_grants['modify']->group_srl == '-3'"  value="-3">Document owner </option>	
+							<option selected="selected"|cond="$api_grants['modify']->group_srl == '-2'"  value="-2">Admin users</option>
+						</select>
+					</td>
+				</tr>
+				<tr cond="$api_grants['delete']">
+					<input type="hidden" value="{$api_grants['delete']->api_url_srl}" name="api_delete_url">
+					<th scope="row">Delete Document</th>
+					<td>
+						<select class="grant_default" name="api_delete_grants">
+							<option selected="selected"|cond="$api_grants['delete']->group_srl == '0'" value="0">All users</option>												
+							<option selected="selected"|cond="$api_grants['delete']->group_srl == '-1'" value="-1">Registered users</option>	
+							<option selected="selected"|cond="$api_grants['delete']->group_srl == '-3'" value="-3">Document owner </option>	
+							<option selected="selected"|cond="$api_grants['delete']->group_srl == '-2'" value="-2">Admin users</option>
+						</select>
+					</td>
+				</tr>
+				<tr cond="$api_grants['category']">
+					<input type="hidden" value="{$api_grants['category']->api_url_srl}" name="api_category_url">
+					<th scope="row">Category</th>
+					<td>
+						<select class="grant_default" name="api_category_grants">
+							<option selected="selected"|cond="$api_grants['category']->group_srl == '0'" value="0" >All users</option>							
+							<option selected="selected"|cond="$api_grants['category']->group_srl == '-1'" value="-1">Registered users</option>	
+							<option selected="selected"|cond="$api_grants['category']->group_srl == '-2'" value="-2">Admin users</option>
+						</select>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btnArea">
+		<span class="btn"><input type="submit" value="Save"></span>
+	</div>
+</form>

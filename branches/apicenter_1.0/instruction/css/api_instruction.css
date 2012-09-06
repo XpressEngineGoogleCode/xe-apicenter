@@ -1,0 +1,27 @@
+.page-title {border-bottom: 1px solid #CCCCCC; font-size: 2em; padding-bottom: 4px;}
+h1, h2, h3, h4, h5, header {color: #222222; font-size: 16px; font-weight: normal; line-height: 24px;}
+h1 {font-size: 3em; line-height: 1; margin-bottom: 0.5em;}
+.note {background-color: #EFEFEF; border-left: 6px solid #999999; padding: 6px 8px 6px 10px;}
+ul, ol {padding-left: 2em; margin: 0 1.5em 0.3em 0;}
+a { color: #1155CC;}
+#vi-content h2 { border-bottom: 1px solid #CCCCCC; font-size: 167%;}
+#vi-content h2, #vi-content h3, #vi-content h4, #vi-content h5, #vi-content h6 { margin-top: 2.0em;}
+p { margin: 0 0 1.5em; }
+#vi-content  h3 {font-size: 133%; font-weight: bold;}
+#vi-content pre {background-color: #FAFAFA; border: 1px solid #BBBBBB; overflow: auto; padding: 6px 10px;}
+.prettyprint span {display:inline}
+.prettyprint .domain {color: #880000;}
+.prettyprint .val { color: #006666;}
+.prettyprint .pun { color: #666600;}
+.req_param {font-size:12px; margin-top:25px; margin-bottom:10px; font-weight:bold}
+#vi-content  table {border: 1px solid #BBBBBB; border-collapse: collapse; border-spacing: 0; margin: 0 0 1.5em; }
+th {background-color: #6199DF; color: #FFFFFF;}
+#vi-content table th, #vi-content table td {padding: 6px 10px;}
+#vi-content table thead th, #vi-content table th { border: 1px solid #4D90FE;}
+#vi-content table td {border: 1px solid #BBBBBB; vertical-align: top;}
+th, td, caption { float: none !important; font-weight: normal; text-align: left; vertical-align: middle; }
+.attrheaderl {font-weight: bold}
+#vi-content code {color: #007000;}
+.post {color: #660066; font-weight: bold}
+.error_code th {background-color: #000000; color: #FFFFFF;  border: 1px solid #000000 !important;}
+.error_code code {color: red !important}

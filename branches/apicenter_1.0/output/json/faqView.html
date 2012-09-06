@@ -1,0 +1,19 @@
+{
+	"status_code":"200",
+	"status_message":"Load faq document information successful.",
+	"document":{
+		"id":"{$document_info->question_srl}",
+		"question":"{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('question')))}",
+		<!--@if($document_info->get('category_srl'))-->
+			"category":{
+				"category_id":"{$document_info->category_srl}",
+				"category_title":"{str_replace('\'', '&apos;',$document_info->category_title)}"
+			},
+		<!--@end-->
+		"answer":"{str_replace(array("\r\n","\n","\t"),"",htmlspecialchars($document_info->get('answer')))}",
+		"create_date":"{$document_info->get('regdate')}",
+		"author":"{$document_info->nick_name}",
+		"positive_vote":"{$document_info->get('positive')}",
+		"negative_vote":"{$document_info->get('negative')}"
+	}
+}

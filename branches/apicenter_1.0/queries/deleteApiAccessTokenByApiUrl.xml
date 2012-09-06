@@ -1,0 +1,8 @@
+<query id="deleteApiAccessTokenByApiUrl" action="delete">
+    <tables>
+        <table name="api_access_token" />
+    </tables>
+	<conditions>
+		<condition operation="in" column="api_url_srl" var="api_url_srl" notnull="notnull" />
+	</conditions>
+</query>

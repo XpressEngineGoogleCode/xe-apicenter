@@ -1,0 +1,21 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_info)-->Load faq document information successful.<!--@else-->There isn't a faq document.<!--@end--></status_message>
+	<document>
+		<id>{$document_info->question_srl}</id>
+		<question>{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('question')))}</question>
+		<!--@if($document_info->get('category_srl'))-->
+			<category>
+				<category_id>{$document_info->category_srl}</category_id>
+				<category_title>{str_replace('\'', '&apos;',htmlspecialchars($document_info->category_title))}</category_title>
+			</category>
+		<!--@end-->
+	    <answer>{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('answer')))}</answer>
+	    <create_date>{$document_info->get('regdate')}</create_date>
+	    <author>{$document_info->nick_name}</author>
+		<positive_vote>{$document_info->get('positive')}</positive_vote>
+		<negative_vote>{$document_info->get('negative')}</negative_vote>
+	</document>
+</response>

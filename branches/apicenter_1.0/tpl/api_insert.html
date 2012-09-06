@@ -1,0 +1,70 @@
+<div class="modal" id="editAPI">
+	<div class="fg">
+		<form ruleset="insertApiItem" id="editForm" action="./" method="post" enctype="multipart/form-data" class="form">
+		<input type="hidden" name="module" value="apicenter" />
+		<input type="hidden" name="act" value="procApicenterAdminInsertApiItem" />
+		<input type="hidden" name="api_item_srl" value="" />
+		<h2 class="h2"><span>{$lang->add_api_item}</span><span cond="$api_item_srl">{$lang->edit_api}</span></h2>
+			<ul>
+				<li>
+					<p class="q"><label for="name">{$lang->api_title} <em>*</em></label></p>
+					<div class="a">
+						<input type="text" class="vLang" id="api_title" name="api_title" />
+						<p class="p_add_api">{$lang->about_api_title}</p>
+					</div>
+				</li>
+				<li id="kindModule">
+					<p class="q"><label for="kModule">{$lang->select_module} <em>*</em></label></p>
+					<p class="a">
+						<select style="width:290px" id="kModule" name="module_type">
+							<block loop="$module_list=>$key,$value">
+								<option value="{$key}" >{$value->title}</option>
+							</block>
+						</select>
+					</p>
+					<p class="p_add_api">{$lang->about_select_module}</p>
+				</li>
+				<li id="selectModule">
+					<p class="q"><label for="sModule_mid">{$lang->select_mid} <em>*</em></label></p>
+					<p class="a">
+						<select style="width:290px" id="sModule_mid" name="select_module_id">
+						</select>
+					</p>
+					<p class="p_add_api">{$lang->about_select_mid}</p>
+				</li>
+				<li id="selectOutput">
+					<p class="q"><label for="sModule_format">{$lang->select_output} <em>*</em></label></p>
+					<p class="a">
+						<select style="width:100px" id="sModule_format" name="select_format">
+							<option value="xml">XML</option>
+							<option value="json">JSON</option>
+						</select>
+					</p>
+					<p class="p_add_api">{$lang->about_select_output}</p>
+				</li>
+				<li>
+					<p class="q"><label for="api_key">{$lang->api_keys} <em>*</em></label></p>
+					<input type="text" class="vLang" id="api_key" name="api_key" /><span class="forgot_api">Forgot API key?</span><a class="forgot_api_link" href="{getUrl('act','dispApicenterAdminKeyList')}">Go to API key list...</a>
+					<p class="p_add_api">{$lang->about_add_api_key}</p>
+				</li>
+				<li>
+					<p class="q">{$lang->about_select_api_method} <em>*</em></p>
+					<p class="a" id="api_method">
+						<input type="checkbox" name="api_type_list" id="api_type_list" value="Y" checked/> <span id="api_type_list_span">List</span>
+						<input type="checkbox" name="api_type_view"  id="api_type_view" value="Y" checked/> <span id="api_type_view_span">View</span>
+						<input type="checkbox" name="api_type_write"  id="api_type_write" value="Y" /> <span id="api_type_write_span">Write</span>
+						<input type="checkbox" name="api_type_modify"  id="api_type_modify" value="Y" /> <span id="api_type_modify_span">Modify</span>
+						<input type="checkbox" name="api_type_delete"  id="api_type_delete" value="Y" /> <span id="api_type_delete_span">Delete</span>
+					</p>
+				</li>
+				<li id="api_description">
+					<p class="q">{$lang->description} </p>
+					<textarea rows="2" name="api_description"></textarea>
+				</li>
+			</ul>
+			<div class="btnArea">
+				<span class="btn"><input type="submit" id="api_item_submit" value="{$lang->cmd_save}" /></span>
+			</div>
+		</form>
+	</div>
+</div>

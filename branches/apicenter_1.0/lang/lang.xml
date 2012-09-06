@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="api_center">
+		<value xml:lang="ko"><![CDATA[API Center]]></value>
+		<value xml:lang="en"><![CDATA[API Center]]></value>
+		<value xml:lang="zh-CN"><![CDATA[API 中心]]></value>
+	</item>
+	<item name="about_api_center">
+		<value xml:lang="ko"><![CDATA[The API Center module allows XE admin user add, modify and delete API Items based on extension XE modules. ]]></value>
+		<value xml:lang="en"><![CDATA[The API Center module allows XE admin user add, modify and delete API Items based on extension XE modules. ]]></value>
+		<value xml:lang="zh-CN"><![CDATA[XE API Center 模块使得用户生成，修改和删除站点相关模块的API, 使用这些API，用户可以在其他的应用上获得站点的数据。 ]]></value>
+	</item>
+	<item name="api_list">
+		<value xml:lang="ko"><![CDATA[API List]]></value>
+		<value xml:lang="en"><![CDATA[API List]]></value>
+		<value xml:lang="zh-CN"><![CDATA[API 列表]]></value>
+	</item>
+	<item name="api_keys">
+		<value xml:lang="ko"><![CDATA[API Key]]></value>
+		<value xml:lang="en"><![CDATA[API Key]]></value>
+		<value xml:lang="zh-CN"><![CDATA[API 密匙]]></value>
+	</item>
+	<item name="api_create">
+		<value xml:lang="ko"><![CDATA[API Create]]></value>
+		<value xml:lang="en"><![CDATA[API Create]]></value>
+		<value xml:lang="zh-CN"><![CDATA[API 生成]]></value>
+	</item>
+	<item name="api_info">
+		<value xml:lang="ko"><![CDATA[API Info]]></value>
+		<value xml:lang="en"><![CDATA[API Info]]></value>
+		<value xml:lang="zh-CN"><![CDATA[API 信息]]></value>
+	</item>
+	<item name="api_title">
+		<value xml:lang="ko"><![CDATA[API Title]]></value>
+		<value xml:lang="en"><![CDATA[API Title]]></value>
+		<value xml:lang="zh-CN"><![CDATA[API 标题]]></value>
+	</item>
+	<item name="about_api_title">
+		<value xml:lang="ko"><![CDATA[Please insert API title, which should be different with other API titles.]]></value>
+		<value xml:lang="en"><![CDATA[Please insert API title, which should be different with other API titles.]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Please insert API title, which should be different with other API titles.]]></value>
+	</item>
+	<item name="select_module">
+		<value xml:lang="ko"><![CDATA[Select Module]]></value>
+		<value xml:lang="en"><![CDATA[Select Module]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Select Module]]></value>
+	</item>
+	<item name="about_select_module">
+		<value xml:lang="ko"><![CDATA[Select a XE module, the modules supported by API center includes Page, Board, Kin(Q&A), Cafe, Project etc.]]></value>
+		<value xml:lang="en"><![CDATA[Select a XE module, the modules supported by API center includes Page, Board, Kin(Q&A), Cafe, Project etc.]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Select a XE module, the modules supported by API center includes Page, Board, Kin(Q&A), Cafe, Project etc.]]></value>
+	</item>
+	<item name="select_mid">
+		<value xml:lang="ko"><![CDATA[Select Module ID]]></value>
+		<value xml:lang="en"><![CDATA[Select Module ID]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Select Module ID]]></value>
+	</item>
+	<item name="about_select_mid">
+		<value xml:lang="ko"><![CDATA[Select a Module ID (specific source) based on selected XE module.]]></value>
+		<value xml:lang="en"><![CDATA[Select a Module ID (specific source) based on selected XE module.]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Select a Module ID (specific source) based on selected XE module.]]></value>
+	</item>
+	<item name="add_api_item">
+		<value xml:lang="ko"><![CDATA[Add a New API Item]]></value>
+		<value xml:lang="en"><![CDATA[Add a New API Item]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Add a New API Item]]></value>
+	</item>
+	<item name="select_output">
+		<value xml:lang="ko"><![CDATA[Select Output]]></value>
+		<value xml:lang="en"><![CDATA[Select Output]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Select Output]]></value>
+	</item>
+	<item name="about_select_output">
+		<value xml:lang="ko"><![CDATA[Select an output data format, XML or JSON.]]></value>
+		<value xml:lang="en"><![CDATA[Select an output data format, XML or JSON.]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Select an output data format, XML or JSON.]]></value>
+	</item>
+	<item name="about_select_api_method">
+		<value xml:lang="ko"><![CDATA[Select  API Typies (the target data retrieved from or created by API) ]]></value>
+		<value xml:lang="en"><![CDATA[Select  API Typies (the target data retrieved from or created by API) ]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Select API Typies (the target data retrieved from or created by  API) ]]></value>
+	</item>
+	<item name="about_add_api_key">
+		<value xml:lang="ko"><![CDATA[Please insert an API key, generate one if you still do not have it. ]]></value>
+		<value xml:lang="en"><![CDATA[Please insert an API key, generate one if you still do not have it.  ]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Please insert an API key, generate one if you still do not have it. ]]></value>
+	</item>
+	<item name="add_api_key">
+		<value xml:lang="ko"><![CDATA[Apply a New API Key ]]></value>
+		<value xml:lang="en"><![CDATA[Apply a New API Key]]></value>
+		<value xml:lang="zh-CN"><![CDATA[申请API Key ]]></value>
+	</item>
+	<item name="purpose">
+		<value xml:lang="ko"><![CDATA[Purpose]]></value>
+		<value xml:lang="en"><![CDATA[Purpose]]></value>
+		<value xml:lang="zh-CN"><![CDATA[目的]]></value>
+	</item>
+	<item name="generate_api_key">
+		<value xml:lang="ko"><![CDATA[Generate Key]]></value>
+		<value xml:lang="en"><![CDATA[Generate Key]]></value>
+		<value xml:lang="zh-CN"><![CDATA[生成密匙]]></value>
+	</item>
+</lang>

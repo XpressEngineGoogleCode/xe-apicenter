@@ -1,0 +1,12 @@
+<query id="getApiAccessTokenByMemberUrl" action="select">
+    <tables>
+        <table name="api_access_token" alias="api_access_token" />
+    </tables>
+    <columns>
+		<column name="*" />
+    </columns>
+    <conditions>
+		 <condition operation="equal" column="api_access_token.member_srl" var="member_srl" />
+		 <condition operation="equal" column="api_access_token.api_url_srl" var="api_url_srl" pipe="and"/>
+    </conditions>
+</query>

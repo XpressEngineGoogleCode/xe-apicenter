@@ -1,0 +1,27 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_list)-->Load textyle document list successful.<!--@else-->There isn't a textyle document list.<!--@end--></status_message>
+	<documents doc_count="{$count}">
+	<!--@foreach($document_list as $oDocument)-->
+	<document>
+	    <id>{$oDocument->document_srl}</id>
+	    <title>{str_replace('\'', '&apos;',htmlspecialchars($oDocument->get('title')))}</title>
+		<!--@if($oDocument->get('category_srl'))-->
+	    <category>
+			<category_id>{$oDocument->get('category_srl')}</category_id>
+			<category_title>{str_replace('\'', '&apos;', $oDocumentModel->getCategory($oDocument->get('category_srl'))->title)}</category_title>
+		</category>
+		<!--@end-->
+	    <content>{str_replace('\'', '&apos;',htmlspecialchars($oDocument->get('content')))}</content>
+	    <create_date>{$oDocument->get('regdate')}</create_date>
+	    <author>{$oDocument->get('nick_name')}</author>
+		<!--@if($oDocument->getThumbnail())-->
+		<thumbnail>{$oDocument->getThumbnail(100)}</thumbnail>
+		<!--@end-->
+		<comment_count>{$oDocument->get('comment_count')}</comment_count>
+	</document>
+	<!--@end-->
+	</documents>
+</response>

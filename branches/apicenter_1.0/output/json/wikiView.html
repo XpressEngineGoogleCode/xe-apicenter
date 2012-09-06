@@ -1,0 +1,35 @@
+{
+	"status_code":"200",
+	"status_message":"Load wiki document information successful.",
+	"document":{
+		"id":"{$oDocument->get('document_srl')}",
+		"title":"{str_replace('\'', '&apos;',htmlspecialchars($oDocument->get('title')))}",
+		"content":"{str_replace(array("\r\n","\n","\t"), "",htmlspecialchars($document_info->content))}",
+		"create_date":"{$oDocument->get('regdate')}",
+		"author":"{$oDocument->get('nick_name')}",
+		"contributors":"{$document_info->contributors}",
+		<!--@if($oDocument->hasUploadedFiles())-->
+			"attachments":{
+				"attributes":{
+					"attach_count":"{$oDocument->get('uploaded_count')}"
+				},
+				"attachment":[<!--@foreach($oDocument->getUploadedFiles() as $key => $attachment)-->{
+					"filename":"{$attachment->source_filename}",
+					"filesize":"{$attachment->file_size}",
+					"download":"{getFullUrl('')}{$attachment->download_url}"
+				}<!--@if($key != count($oDocument->getUploadedFiles())-1)-->,<!--@end--><!--@end-->]
+			},
+		<!--@end-->
+		"comment_count":"{$oDocument->get('comment_count')}"<!--@if($comment_list)-->,<!--@end-->
+		<!--@if($comment_list)-->
+			"comments":{
+				"comment":[<!--@foreach($comment_list as $key => $oComment)-->{
+					"comment_id":"{$oComment->comment_srl}",
+					"comment_content":"{str_replace(array("\r\n","\n","\t"), "",htmlspecialchars($oComment->content))}",
+					"comment_date":"{$oComment->regdate}",
+					"comment_author":"{$oComment->nick_name}"
+				}<!--@if($key != 1)-->,<!--@end--><!--@end-->]
+			}
+		<!--@end-->
+	}
+}

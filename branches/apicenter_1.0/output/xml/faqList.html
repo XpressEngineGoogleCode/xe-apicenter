@@ -1,0 +1,25 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_list)-->Load faq document list successful.<!--@else-->There isn't a faq document list.<!--@end--></status_message>
+	<documents doc_count="{count($document_list)}">
+	<!--@foreach($document_list as $oDocument)-->
+	<document>
+	    <id>{$oDocument->question_srl}</id>
+	    <question>{str_replace('\'', '&apos;',htmlspecialchars($oDocument->get('question')))}</question>
+		<!--@if($oDocument->get('category_srl'))-->
+	    <category>
+			<category_id>{$oDocument->get('category_srl')}</category_id>
+			<category_title>{str_replace('\'', '&apos;', htmlspecialchars($oFaqModel->getCategory($oDocument->get('category_srl'))->title))}</category_title>
+		</category>
+		<!--@end-->
+	    <answer>{str_replace('\'', '&apos;',htmlspecialchars($oDocument->get('answer')))}</answer>
+	    <create_date>{$oDocument->get('regdate')}</create_date>
+	    <author>{$oMemberModel->getMemberInfoByMemberSrl($oDocument->get('member_srl'))->nick_name}</author>
+		<positive_vote>{$oDocument->get('positive')}</positive_vote>
+		<negative_vote>{$oDocument->get('negative')}</negative_vote>
+	</document>
+	<!--@end-->
+	</documents>
+</response>

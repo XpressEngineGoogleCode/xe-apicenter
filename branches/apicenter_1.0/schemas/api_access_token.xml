@@ -1,0 +1,8 @@
+<table name="api_access_token">
+	<column name="access_token_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="access_token" type="varchar" size="250" notnull="notnull"/>
+	<column name="api_url_srl" type="number" size="11" default="0" notnull="notnull" index="idx_api_url_srl" />
+	<column name="member_srl" type="number" size="11" default="0" notnull="notnull" index="idx_member_srl" />
+	<column name="regdate" type="date" index="idx_regdate" />
+	<column name="expire" type="date" />
+</table>

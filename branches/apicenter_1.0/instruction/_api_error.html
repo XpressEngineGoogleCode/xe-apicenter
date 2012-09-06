@@ -1,0 +1,121 @@
+	<!-- API Error Collection -->
+	<a name="API_Error"></a>
+	<h2>API Errors Collection</h2>
+	<p>API error message will be displayed if the API requested fail, for example, 1) if the user provide an invalid api_k parameter value 2) if the user request Write, Modify and Delete APIs by using GET HTTP method etc.  Below is a sample error message of a failed API Request:</p>
+<block cond="$api_output == 'xml'">
+<pre class="prettyprint" style="color: #008800;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;<xmp><error_code>121</error_code>
+<error_message>API Access Error! API Key must be 16 alphanumeric chars.</error_message></xmp></pre>
+</block>
+<block cond="$api_output == 'json'">
+<pre class="prettyprint" style="color: #008800;">{
+    "error_code": "121",
+    "error_message": "API Access Error! API Key must be 16 alphanumeric chars."
+}</pre>
+</block>
+	<div class="req_param"><block cond="$api_output == 'xml'">Error Output XML Data Introduction</block><block cond="$api_output == 'json'">Error Output JSON Data Introduction</block></div>
+	<table width="100%" border="1">
+		  <tbody>
+			<tr>
+			  <th class="attrheaderl" width="15%"><block cond="$api_output == 'xml'">XML Tags</block><block cond="$api_output == 'json'">JSON Nodes</block></th>
+			  <th class="attrheaderl" width="15%">Parent</th>
+			  <th class="attrheaderl">Description</th>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>error_code</strong></td>
+			  <td class="tagname">root</td>
+			  <td class="tagtype"><p> The <code>error_code</code> tag represents the error identifier of the API requested, each error code represents a spcific API Reqeust error.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>error_message</strong></td>
+			  <td class="tagname">root</td>
+			  <td class="tagtype"><p> The <code>error_message</code> tag represents the error message of the API requested, the user can figure out why the API request was failed.</p></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="req_param">API Error Code Description</div>
+	<table width="100%" border="1" class="error_code">
+		  <tbody>
+			<tr>
+			  <th class="attrheaderl" width="10%">Error Code</th>
+			  <th class="attrheaderl" width="20%">Group</th>
+			  <th class="attrheaderl">Description</th>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>101</strong></td>
+			  <td class="tagname">URL Parameter Error</td>
+			  <td class="tagtype"><p>Input an invalid <code>uid</code> value, uid must be a number</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>102</strong></td>
+			  <td class="tagname">URL Parameter Error</td>
+			  <td class="tagtype"><p> Input an invalid <code>uid</code> value, the uid is not existed.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>103</strong></td>
+			  <td class="tagname">URL Parameter Error</td>
+			  <td class="tagtype"><p> Input an invalid <code>limit</code> value, the  limit must be a number.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>104</strong></td>
+			  <td class="tagname">URL Parameter Error</td>
+			  <td class="tagtype"><p> Input an invalid <code>page</code> value, the page must be a number.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>105</strong></td>
+			  <td class="tagname">URL Parameter Error</td>
+			  <td class="tagtype"><p>  Input an invalid <code>doc_id</code> value, the doc_id must be a number.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>106</strong></td>
+			  <td class="tagname">URL Parameter Error</td>
+			  <td class="tagtype"><p> Input an invalid <code>cat_id</code> value, the cat_id must be a number.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>107</strong></td>
+			  <td class="tagname">URL Parameter Error</td>
+			  <td class="tagtype"><p>This API URL must contain a valid doc_id value.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>108</strong></td>
+			  <td class="tagname">URL Parameter Error</td>
+			  <td class="tagtype"><p>The category API must contain target value: category.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>121</strong></td>
+			  <td class="tagname">API Access Error</td>
+			  <td class="tagtype"><p> Input an invalid <code>api_k</code> value, the API Key must be 16 alphanumeric chars.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>122</strong></td>
+			  <td class="tagname">API Access Error</td>
+			  <td class="tagtype"><p> Input an invalid <code>api_k</code> value, the API Key is not existed.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>123</strong></td>
+			  <td class="tagname">API Access Error</td>
+			  <td class="tagtype"><p> Input an invalid <code>token</code> value, the  access token is not existed.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>124</strong></td>
+			  <td class="tagname">API Access Error</td>
+			  <td class="tagtype"><p> It is an Auth API, please use Login API first.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>128</strong></td>
+			  <td class="tagname">API Access Error</td>
+			  <td class="tagtype"><p> This API can only called by an POST HTTP request.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>131</strong></td>
+			  <td class="tagname">Login API Error</td>
+			  <td class="tagtype"><p> Invalid User Information,  request Login API failed.</p></td>
+			</tr>
+			<tr>
+			  <td class="tagname"><strong>150</strong></td>
+			  <td class="tagname">General Error</td>
+			  <td class="tagtype"><p> Invalid API Request</p></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+

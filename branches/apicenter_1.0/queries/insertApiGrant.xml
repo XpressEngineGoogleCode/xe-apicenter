@@ -1,0 +1,11 @@
+<query id="insertApiGrant" action="insert">
+    <tables>
+        <table name="api_grants" />
+    </tables>
+    <columns>
+		<column name="api_item_srl" var="api_item_srl" notnull="notnull" />
+        <column name="api_url_srl" var="api_url_srl" filter="number" notnull="notnull" />
+		<column name="api_type" var="api_type" notnull="notnull" />
+		<column name="group_srl" var="group_srl" notnull="notnull" />
+    </columns>
+</query>

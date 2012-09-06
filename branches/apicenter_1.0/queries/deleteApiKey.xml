@@ -1,0 +1,8 @@
+<query id="deleteApiKey" action="delete">
+    <tables>
+        <table name="api_keys" />
+    </tables>
+	<conditions>
+			<condition operation="in" column="api_key_srl" var="api_key_srl" filter="number" notnull="notnull" />
+	</conditions>
+</query>

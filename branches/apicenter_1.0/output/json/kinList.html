@@ -1,0 +1,27 @@
+{
+	"status_code":"200",
+	"status_message":"Load kin document list successful.",
+	"documents":{
+		"attributes":{
+			"doc_count":"{$count}"
+		},
+		"document":[<!--@foreach($document_list as $key => $oDocument)-->{
+			"id":"{$oDocument->document_srl}",
+			"title": "{str_replace('\'', '&apos;',htmlspecialchars($oDocument->get('title')))}",
+			<!--@if($oDocument->get('category_srl'))-->
+				"category":{
+					"category_id":"{$oDocument->get('category_srl')}",
+					"category_title":"{str_replace('\'', '&apos;', $oDocumentModel->getCategory($oDocument->get('category_srl'))->title)}"
+				},
+			<!--@end-->
+			"content": "{str_replace(array("\r\n","\n","\t"),"",htmlspecialchars($oDocument->get('content')))}",
+			"create_date":"{strtotime($oDocument->get('regdate'))}",
+			"author":"{$oDocument->get('nick_name')}",
+			"point":"{intval($oDocument->point)}",
+			<!--@if($oDocument->getThumbnail())-->
+				"thumbnail":"{$oDocument->getThumbnail(100)}",
+			<!--@end-->
+			"answer_count":"{$oDocument->get('comment_count')}",
+			"replies_count":"{$oDocument->repliesCount}"
+	}<!--@if($key != 1)-->,<!--@end--><!--@end-->]
+}}

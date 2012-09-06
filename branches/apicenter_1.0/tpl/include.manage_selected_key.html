@@ -1,0 +1,32 @@
+<load target="js/manage_selected_api.js" usecdn="true" />
+<load target="js/apicenter_admin.js" usecdn="true" />
+<script type="text/javascript">
+	xe.lang.confirm_delete = "Are you sure to delete these API Keys?";
+</script>
+
+<div id="manageSelectedKey" class="modal">
+	<div class="fg">
+		<h2 class="h2">{$lang->do_selected}</h2>
+		<form id="manageSelectedKeyForm" action="./" method="post" enctype="multipart/form-data" class="form">
+			<input type="hidden" name="api_key_srls" value=""/>
+			<input type="hidden" name="act" value="procApicenterAdminDeleteSelectedKeys" />
+			<div class="btnArea">
+				<input onclick="return confirmDelete();" type="submit" value="Delete All Selected API Keys" />
+			</div>
+		</form>
+		<div class="table even">
+			<table width="100%" cellspacing="0" border="1">
+				<thead>
+					<tr>
+						<th scope="col">API Key</th>
+						<th scope="col">Purpose</th>
+						<th scope="col">Author</th>
+						<th scope="col">Date</th>
+					</tr>
+				</thead>
+				<tbody id="manageSelectedKeyBody">
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

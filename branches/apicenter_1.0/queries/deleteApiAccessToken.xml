@@ -1,0 +1,8 @@
+<query id="deleteApiAccessToken" action="delete">
+    <tables>
+        <table name="api_access_token" />
+    </tables>
+	<conditions>
+		<condition operation="equal" column="access_token_srl" var="access_token_srl" filter="number" notnull="notnull" />
+	</conditions>
+</query>

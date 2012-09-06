@@ -1,0 +1,23 @@
+<query id="updateApiItem" action="update">
+    <tables>
+        <table name="api_items" />
+    </tables>
+    <columns>
+		<column name="api_title" var="api_title" notnull="notnull" />
+		<column name="module" var="module" notnull="notnull" />
+		<column name="module_srl" var="module_srl" filter="number" default="0" />
+		<column name="mid" var="mid" notnull="notnull" />
+		<column name="output_format" var="output_format" notnull="notnull" default="xml" />
+		<column name="api_types" var="api_types" notnull="notnull" />
+		<column name="api_key_srl" var="api_key_srl" filter="number" default="0" />
+		<column name="api_key" var="api_key" notnull="notnull" />
+		<column name="description" var="description" />
+		<column name="member_srl" var="member_srl" notnull="notnull"/>
+		<column name="regdate" var="regdate" default="curdate()" />
+        <column name="last_update" var="last_update" default="curdate()" />
+		<column name="extra_vars" var="extra_vars" default=""/>
+    </columns>
+    <conditions>
+        <condition operation="equal" column="api_item_srl" var="api_item_srl" filter="number" notnull="notnull" />
+    </conditions>
+</query>

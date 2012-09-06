@@ -1,0 +1,6 @@
+<table name="api_grants">
+    <column name="api_item_srl" type="number" size="11" notnull="notnull" />
+    <column name="api_url_srl" type="number" size="11" notnull="notnull" />
+    <column name="api_type" type="varchar" size="11" notnull="notnull" />
+	<column name="group_srl" type="number" size="11" notnull="notnull"  />
+</table>

@@ -1,0 +1,11 @@
+<query id="getModuleListInstalled" action="select">
+    <tables>
+        <table name="modules" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+	<groups>
+		<group column="module" />
+	</groups>
+</query>
