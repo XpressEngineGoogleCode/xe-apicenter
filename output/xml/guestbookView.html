@@ -1,0 +1,31 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_info)-->Load guestbook document information successful.<!--@else-->There isn't a guestbook document.<!--@end--></status_message>
+	<document>
+		<id>{$document_info->guestbook_item_srl}</id>
+		<content>{str_replace('\'', '&apos;',htmlspecialchars($document_info->content))}</content>
+	    <create_date>{$document_info->regdate}</create_date>
+	    <author>{$document_info->nick_name}</author>
+		<!--@if($document_info->author_profile_image)-->
+		<profile_image>{$document_info->author_profile_image}</profile_image>
+		<!--@end-->
+		<comment_count>{$document_info->comment_count}</comment_count>
+		<!--@if($comment_list)-->
+			<comments>
+				<!--@foreach($comment_list as $oComment)-->
+					<comment>
+						<comment_id>{$oComment->guestbook_item_srl}</comment_id>
+						<comment_content>{str_replace('\'', '&apos;',htmlspecialchars($oComment->content))}</comment_content>
+						<comment_date>{$oComment->regdate}</comment_date>
+						<comment_author>{$oComment->nick_name}</comment_author>
+						<!--@if($oMemberModel->getProfileImage($oComment->member_srl)->src)-->
+						<comment_profile_image>{$oMemberModel->getProfileImage($oComment->member_srl)->src}</comment_profile_image>
+						<!--@end-->
+					</comment>
+				<!--@end-->
+			</comments>
+		<!--@end-->
+	</document>
+</response>

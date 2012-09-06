@@ -1,0 +1,57 @@
+{
+	"status_code":"200",
+	"status_message":"Load kin document information successful.",
+	"document":{
+		"id":"{$document_info->document_srl}",
+		"title":"{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('title')))}",
+		<!--@if($document_info->get('category_srl'))-->
+			"category":{
+			"category_id":"{$document_info->get('category_srl')}",
+			"category_title":"{str_replace('\'', '&apos;',$document_info->get('category_title'))}"
+			},
+		<!--@end-->
+		"content":"{str_replace(array("\r\n","\n","\t"),"",htmlspecialchars($document_info->get('content')))}",
+		"create_date":"{$document_info->get('regdate')}",
+		"author":"{$document_info->get('nick_name')}",
+		"point":"{intval($document_info->get('point'))}",
+		<!--@if($document_info->getThumbnail())-->
+			"thumbnail":"{$document_info->getThumbnail(100)}",
+		<!--@end-->
+		<!--@if($document_info->hasUploadedFiles())-->
+			"attachments":{
+				"attributes":{
+					"attach_count":"{$document_info->get('uploaded_count')}"
+				},
+				"attachment":[<!--@foreach($document_info->getUploadedFiles() as $key => $attachment)-->{
+					"filename":"{$attachment->source_filename}",
+					"filesize":"{$attachment->file_size}",
+					"download":"{getFullUrl('')}{$attachment->download_url}"
+				}<!--@if($key != count($document_info->getUploadedFiles())-1)-->,<!--@end--><!--@end-->]
+			},
+		<!--@end-->
+		"answer_count":"{$document_info->get('comment_count')}",
+		"accepted_answer":"{$document_info->get('accepted_answer')}",
+		<!--@if($answer_list)-->
+			"answers":{
+				"answer":[<!--@foreach($answer_list as $key => $oAnswer)-->{
+					"answer_id":"{$oAnswer->comment_srl}",
+					"answer_content":"{str_replace(array("\r\n","\n","\t"),"", str_replace('\'', '&apos;',htmlspecialchars($oAnswer->content)))}",
+					"answer_date":"{$oAnswer->regdate}",
+					"answer_author":"{$oAnswer->nick_name}"<!--@if($oAnswer->comment_srl == $document_info->get('accepted_answer'))-->,
+					"answer_accepted":"Yes"
+					<!--@end-->
+				}<!--@if($index != count($answer_list)-1)-->,{@$index++;}<!--@end--><!--@end-->]
+			},
+		<!--@end-->
+		"replies_count":"{$document_info->get('repliesCount')}"<!--@if($replies)-->,
+		"replies":{
+			"reply":[<!--@foreach($replies as $key => $reply)-->{
+				"reply_id":"{$reply->comment_srl}",
+				"reply_content":"{str_replace(array("\r\n","\n","\t"),"", str_replace('\'', '&apos;',htmlspecialchars($reply->content)))}",
+				"reply_date":"{$reply->regdate}",
+				"reply_author":"{$reply->nick_name}"
+			}<!--@if($key != 1)-->,<!--@end--><!--@end-->]
+		}
+		<!--@end-->
+	}
+}

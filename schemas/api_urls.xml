@@ -1,0 +1,15 @@
+<table name="api_urls">
+	<column name="api_url_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="api_item_srl" type="number" size="11" notnull="notnull" index="idx_api_item_srl" />
+	<column name="api_type" type="varchar" size="10" />
+	<column name="module" type="varchar" size="80" notnull="notnull" index="idx_module" />
+	<column name="module_srl" type="number" size="11" default="0" notnull="notnull" index="idx_module_srl" />
+	<column name="api_key_srl" type="number" size="11" default="0" notnull="notnull" index="idx_api_key_srl" />
+	<column name="api_key" type="varchar" size="80" notnull="notnull" />
+	<column name="url" type="text" />
+	<column name="login_api" type="text" />
+	<column name="oauth" type="varchar" size="4"  default="N" />
+	<column name="member_srl" type="number" size="11" notnull="notnull" index="idx_member_srl" />
+	<column name="regdate" type="date" index="idx_regdate" />
+	<column name="extra_vars" type="text" />
+</table>

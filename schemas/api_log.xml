@@ -1,0 +1,7 @@
+<table name="api_log">
+	<column name="api_log_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="api_url_srl" type="number" size="11" notnull="notnull" index="idx_api_url_srl" />
+	<column name="module_srl" type="number" size="11" default="0" notnull="notnull" index="idx_module_srl" />
+	<column name="ipaddress" type="varchar" size="250" notnull="notnull" index="idx_ipaddress" />
+	<column name="regdate" type="date" index="idx_regdate" />
+</table>

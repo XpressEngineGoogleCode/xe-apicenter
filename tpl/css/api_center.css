@@ -1,0 +1,36 @@
+.api_center_h3, .api_center_des {margin-bottom:15px;}
+.api_fieldset {padding-left: 5px !important;}
+.api_fieldset label {margin-left:5px; margin-right:5px;}
+.api_fieldset select, .api_fieldset input {vertical-align: middle;}
+.s_contents {margin-left: 5px !important; height: 20px !important;}
+.s_api_search {height: 25px;}
+.s_api_cancel span{border-radius: 0 !important;  line-height: 25px !important;}
+#api_insert_table th	{width:120px; }
+#api_title	{width:370px; }
+.p_add_api	{margin-top:5px; margin-bottom:5px;}
+#api_method  span	 {margin-right: 10px;}
+#api_description textarea	{width:400px;}
+#api_view tr { height:40px;}
+#urll {list-style:none; padding-left: 0; margin-top: 0;}
+#urll span {color:#660066; margin-right:12px; font-size:14px; display: inline-block; font-weight: bold; }
+#urll .url_link {color: #008800; margin-right:0px; font-size:12px; padding-top:5px; text-decoration: none;  line-height: 30px;}
+#urll li {margin-bottom: 25px}
+#urll pre {background-color: #FAFAFA; border: 1px solid #BBBBBB; overflow: auto;padding: 8px 10px;  width: 98%; margin-top: 5px;}
+#urll .btn {border: 1px solid #ABABAB; border-radius: 1px 1px 1px 1px; color: #444444;display: inline-block; font-size: 12px; height: 16px; line-height: 16px; margin-right: 3px;padding: 0 5px; text-decoration: none; background-color: white;}
+#apiKeyList pre {background-color: #FAFAFA; border: 1px solid #BBBBBB; overflow: auto;padding: 6px 10px; color:red; width: 200px; }
+#apiKeyList  td{vertical-align:middle;}
+.copytoclip { margin-left:10px; font-size:10px !important; display:none;}
+.user_name, .api_key_value {vertical-align: middle;font-weight: 100; margin-left: 20px;}
+.api_key_value {color: red;}
+#api_key_purpose textarea	{width:90%;}
+.apikey_span {width:130px; display: inline-block;}
+.forgot_api	{margin-left:10px; margin-right:10px;}
+.forgot_api_link	{text-decoration: none;}
+.api_key_label {display:none}
+#api_grants select{width: 200px;}
+.label_oauth {color: red; font-size: 12px; margin-right:5px; }
+.label_target_user {font-size: 12px; margin-right:10px;}
+.small_span {font-size:12px !important; font-weight: 200 !important; margin-left:10px; width:100px !important;}
+#documentListTable td {padding-top: 12px; padding-bottom: 10px;}
+div.side {margin-bottom:2px;}
+

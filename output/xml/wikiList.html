@@ -1,0 +1,22 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_list)-->Load wiki document list successful.<!--@else-->There isn't a wiki document list.<!--@end--></status_message>
+	<documents doc_count="{$count}">
+	<!--@foreach($document_list as $oDocument)-->
+	<document>
+	    <id>{$oDocument->document_srl}</id>
+		<parent_id>{$oDocument->parent_srl}</parent_id>
+		<children>{$oDocument->child}</children>
+		<depth>{$oDocument->depth}</depth>
+		<language>{$oDocument->language}</language>
+	    <title>{str_replace('\'', '&apos;',htmlspecialchars($oDocument->title))}</title>
+	    <content>{str_replace('\'', '&apos;',htmlspecialchars($oDocument->content))}</content>
+	    <create_date>{$oDocument->created_date}</create_date>
+	    <author>{$oDocument->author}</author>
+		<comment_count>{$oDocument->comment_count}</comment_count>
+	</document>
+	<!--@end-->
+	</documents>
+</response>

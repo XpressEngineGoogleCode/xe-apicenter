@@ -1,0 +1,17 @@
+{
+	"status_code":"200",
+	"status_message":"Load faq category list successful.",
+	"categories":{
+		"attributes":{
+			"cat_count":"{count($category_list)}"
+		},
+		"category":[<!--@foreach($category_list as $key => $oCategory)-->{
+			"id":"{$oCategory->category_srl}",
+			<!--@if($oCategory->parent_srl)-->
+				"parent_category":"{$oCategory->parent_srl}",
+			<!--@end-->
+			"title": "{$oCategory->title}",
+			"faq_count":"{$oCategory->question_count}",
+			"depth":"{$oCategory->depth}"
+	}<!--@if($index != count($category_list)-1)-->,{@$index++;}<!--@end--><!--@end-->]
+}}

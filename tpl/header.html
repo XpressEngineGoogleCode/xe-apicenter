@@ -1,0 +1,16 @@
+<load target="js/apicenter_admin.js" usecdn="true" />
+<load target="css/api_center.css" />
+
+<h3 class="xeAdmin api_center_h3">{$lang->api_center} <span class="gray">{$lang->cmd_management}</span></h3>
+
+<div class="infoText api_center_des">{nl2br($lang->about_api_center)}</div>
+
+<div class="cnb">
+	<ul>
+		<li cond="$module=='admin'" class="active"|cond="$act=='dispApicenterAdminList'"><a href="{getUrl('act','dispApicenterAdminList','module_srl','','s_module','','s_output_format','','s_contents','','api_item_srl','')}">{$lang->api_list}</a></li>
+		<li cond="$module=='admin'&&$api_item_srl" class="active"|cond="$act=='dispApicenterAdminView'"><a href="{getUrl('act','dispApicenterAdminView','module_srl','')}">{$lang->api_info}</a></li>
+		<li cond="$module=='admin'&&$api_item_srl" class="active"|cond="$act=='dispApicenterAdminGrantInfo'"><a href="{getUrl('act','dispApicenterAdminGrantInfo')}">{$lang->cmd_manage_grant}</a></li>
+		<li cond="$module=='admin'" class="active"|cond="$act=='dispApicenterAdminKeyList'"><a href="{getUrl('act','dispApicenterAdminKeyList','api_item_srl','')}">{$lang->api_keys}</a></li>
+	</ul>
+</div>
+

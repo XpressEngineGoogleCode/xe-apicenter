@@ -1,0 +1,16 @@
+<table name="api_items">
+	<column name="api_item_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="api_title" type="varchar" size="250" />
+	<column name="module" type="varchar" size="80" notnull="notnull" index="idx_module" />
+	<column name="module_srl" type="number" size="11" default="0" notnull="notnull" index="idx_module_srl" />
+	<column name="mid" type="varchar" size="40" notnull="notnull" />
+	<column name="output_format" type="varchar" size="4" />
+	<column name="api_types" type="varchar" size="250" />
+	<column name="api_key_srl" type="number" size="11" default="0" notnull="notnull" index="idx_api_key_srl" />
+	<column name="api_key" type="varchar" size="80" notnull="notnull" />
+	<column name="description" type="text" />
+	<column name="member_srl" type="number" size="11" notnull="notnull" index="idx_member_srl" />
+	<column name="regdate" type="date" index="idx_regdate" />
+	<column name="last_update" type="date" index="idx_last_update" />
+	<column name="extra_vars" type="text" />
+</table>

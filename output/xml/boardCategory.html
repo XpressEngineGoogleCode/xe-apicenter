@@ -1,0 +1,25 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($category_list)-->Load board category list successful.<!--@else-->There isn't a board category list.<!--@end--></status_message>
+	<categories  cat_count="{count($category_list)}">
+	<!--@foreach($category_list as $oCategory)-->
+	<category>
+		<id>{$oCategory->category_srl}</id>
+		<!--@if($oCategory->parent_srl)-->
+		<parent_category>{$oCategory->parent_srl}</parent_category>
+		<!--@end-->
+		<title>{htmlspecialchars($oCategory->title)}</title>
+		<!--@if($oCategory->description)-->
+		<description>{$oCategory->description}</description>
+		<!--@end-->
+		<child_count>{$oCategory->child_count}</child_count>
+		<!--@if($oCategory->child_count)-->
+		<children>{implode($oCategory->childs,',')}</children>
+		<!--@end-->
+		<depth>{$oCategory->depth}</depth>
+	</category>
+	<!--@end-->
+	</categories>
+</response>

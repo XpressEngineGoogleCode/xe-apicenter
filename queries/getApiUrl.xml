@@ -1,0 +1,21 @@
+<query id="getApiUrl" action="select">
+    <tables>
+		<table name="api_urls" alias="api_urls" />
+		<table name="api_items" alias="api_items" />
+		<table name="api_grants" alias="api_grants"/>
+		<table name="member" alias="member"/>
+    </tables>
+    <columns>
+		<column name="api_urls.*" />
+		<column name="api_items.output_format" />
+		<column name="api_items.mid" />
+		<column name="api_grants.group_srl" />
+		<column name="member.*" />
+    </columns>
+    <conditions>
+		 <condition operation="equal" column="api_urls.api_url_srl" var="api_url_srl"  pipe="and" />
+		 <condition operation="equal" column="api_urls.api_item_srl" default="api_items.api_item_srl" notnull="notnull" pipe="and" />
+		 <condition operation="equal" column="api_urls.api_url_srl" default="api_grants.api_url_srl" notnull="notnull" pipe="and" />
+		 <condition operation="equal" column="api_urls.member_srl" default="member.member_srl" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

@@ -1,0 +1,55 @@
+<include target="header.html" />
+
+<div class="table">
+	<table cellspacing="0" class="rowTable" id="api_view">
+	    <tr cond="$logged_info->is_admin=='Y'">
+	        <th scope="row"><div>API Name</div></th>
+	        <td>
+	            <strong>{$apiItem->api_title}</strong>
+	        </td>
+	    </tr>
+	    <tr>
+	        <th scope="row"><div>API Description</div></th>
+	        <td>{$apiItem->description}<block cond="!$apiItem->description">There is not a description for this API</block></td>
+	    </tr>	
+	    <tr>
+	        <th scope="row"><div>XE Module</div></th>
+	        <td>{$apiItem->module}</td>
+	    </tr>
+	    <tr>
+	        <th scope="row"><div>Module ID</div></th>
+	        <td>{$apiItem->mid}&nbsp;&nbsp;[{$target_module_Info->browser_title}]</td>
+	    </tr>
+	    <tr>
+	        <th scope="row"><div>Target URL</div></th>
+	        <td><a href="{getFullUrl('','mid',$apiItem->mid)}" target="blank">{getFullUrl('','mid',$apiItem->mid)}</a></td>
+	    </tr>
+		<tr>
+			<th scope="row"><div>Output Format</div></th>
+			<td>{strtoupper($apiItem->output_format)}</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>Created Date</div></th>
+			<td>{zdate($apiItem->regdate,'Y M d, h:i')}</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>API Key</div></th>
+			<td><span style="color:red">{$apiItem->api_key}</span></td>
+		</tr>
+		<tr>
+			<th scope="row"><div>Generated API URLs</div></th>
+			<td>
+				<ul id="urll">
+					<li loop="$apiUrls =>$key, $apiUrl">
+						<span>{strtoupper($apiUrl->api_type)}</span> 
+						<block cond="$apiUrl->oauth == 'Y'"> <label class="label_oauth">(Auth API - Use Login API first)</label></block>
+						<label class="label_target_user">Target : <block cond="$apiUrl->group_srl == '0'">All users</block><block cond="$apiUrl->group_srl == '-1'">Registered users</block><block cond="$apiUrl->group_srl == '-2'">Admin users</block><block cond="$apiUrl->group_srl == '-3'">Document owner</block></label>
+						{@ $position = '#'.ucfirst($apiItem->module).'_'.ucfirst($apiUrl->api_type).'_API';}
+						<a id="modify_p_3" class="btn btn_p_modify" href="" onclick="window.open('{getUrl('module','apicenter','act','dispApicenterViewInstruction','api_module',$apiItem->module,'api_output',$apiItem->output_format)}+{$position}','newwindow','height=600,width=900,top=50,left=200,toolbar=no,menubar=no,scrollbars=yes, location=no, status=no'); return false;">How to use?</a>
+						<pre><block cond="$apiUrl->oauth == 'Y'">Login API : <a class="url_link" href="#" style="background: none repeat scroll 0 0 #F8F8F8;">{$apiUrl->login_api}</a><br /></block><a class="url_link" href="#" style="background: none repeat scroll 0 0 #F8F8F8; ">{$apiUrl->url}</a><block cond="$apiUrl->api_type=='write' || $apiUrl->api_type=='modify' || $apiUrl->api_type=='delete'"><span class="small_span">[POST Request Only]</span></block></pre>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,9 @@
+<table name="api_keys">
+	<column name="api_key_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="api_key" type="varchar" size="60" notnull="notnull" />
+	<column name="member_srl" type="number" size="11" notnull="notnull" index="idx_member_srl" />
+	<column name="purpose" type="text" />
+	<column name="regdate" type="date" index="idx_regdate" />
+	<column name="last_update" type="date" index="idx_last_update" />
+	<column name="extra_vars" type="text" />
+</table>

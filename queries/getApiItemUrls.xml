@@ -1,0 +1,14 @@
+<query id="getApiItemUrls" action="select">
+    <tables>
+        <table name="api_urls" alias="api_urls" />
+		<table name="api_grants" alias="api_grants" />
+    </tables>
+    <columns>
+		<column name="api_urls.*" />
+		<column name="api_grants.group_srl" />
+    </columns>
+    <conditions>
+		 <condition operation="in" column="api_urls.api_item_srl" var="api_item_srl" />
+		 <condition operation="equal" column="api_urls.api_url_srl" default="api_grants.api_url_srl" pipe="and"/>
+    </conditions>
+</query>

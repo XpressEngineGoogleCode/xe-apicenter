@@ -1,0 +1,46 @@
+{'<?xml version="1.0" encoding="UTF-8" ?>'}
+
+<response>
+	<status_code>200</status_code>
+	<status_message><!--@if($document_info)-->Load forum document information successful.<!--@else-->There isn't a forum document.<!--@end--></status_message>
+	<document>
+		<id>{$document_info->document_srl}</id>
+		<title>{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('title')))}</title>
+		<!--@if($document_info->get('category_srl'))-->
+			<category>
+				<category_id>{$document_info->category_srl}</category_id>
+				<category_title>{str_replace('\'', '&apos;',htmlspecialchars($document_info->category_title))}</category_title>
+			</category>
+		<!--@end-->
+	    <content>{str_replace('\'', '&apos;',htmlspecialchars($document_info->get('content')))}</content>
+	    <create_date>{$document_info->get('regdate')}</create_date>
+	    <author>{$document_info->get('nick_name')}</author>
+		<!--@if($document_info->getThumbnail())-->
+			<thumbnail>{$document_info->getThumbnail(100)}</thumbnail>
+		<!--@end-->
+		<!--@if($document_info->hasUploadedFiles())-->
+			<attachments  attach_count="{$document_info->get('uploaded_count')}">
+				<!--@foreach($document_info->getUploadedFiles() as $attachment)-->
+					<attachment>
+						<filename>{$attachment->source_filename}</filename>
+						<filesize>{$attachment->file_size}</filesize>
+						<download>{getFullUrl('')}{$attachment->download_url}</download>
+					</attachment>
+				<!--@end-->
+			</attachments>
+		<!--@end-->
+		<comment_count>{$document_info->get('comment_count')}</comment_count>
+		<!--@if($comment_list)-->
+			<comments>
+				<!--@foreach($comment_list as $oComment)-->
+					<comment>
+						<comment_id>{$oComment->comment_srl}</comment_id>
+						<comment_content>{str_replace('\'', '&apos;',htmlspecialchars($oComment->content))}</comment_content>
+						<comment_date>{$oComment->regdate}</comment_date>
+						<comment_author>{$oComment->nick_name}</comment_author>
+					</comment>
+				<!--@end-->
+			</comments>
+		<!--@end-->
+	</document>
+</response>
