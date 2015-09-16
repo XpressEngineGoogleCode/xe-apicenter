@@ -1,0 +1,1 @@
+XE API Center Module allows xe user to generate APIs for xe extension modules, in order to retrieve or update the XE site data and use it in other Web or Mobile Apps
